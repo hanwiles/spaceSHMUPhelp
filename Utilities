@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class Utilities
+{
+
+    //return the word 'string' if the user enters a string
+    //return the word 'number' if the user enters a number
+    //return the string 'string and numbers' if the user enters a mixture of both
+    public static string ProcessText(string inputText)
+    {
+        float wordCounter = 0f;
+        float charCounter = 0f;
+        float average = 0f;
+        string averageCount;
+
+        char[] separator = { ' ', ',', '.' };
+
+        string[] words = inputText.Split(separator);
+
+        foreach(string word in words)
+        {
+            wordCounter++;
+            
+            foreach(char character in word)
+            {
+                charCounter++;
+            }
+        }
+
+
+        average = charCounter / wordCounter;
+
+        averageCount = average.ToString();
+
+        return averageCount;
+
+
+        //string[] words = str.Split;
+        //int total = 0;
+        //foreach(var word in words)
+        //{
+            //total += word.Length;
+        //}
+
+        //return "" + total / words.Length;
+
+        
+    }
+}
