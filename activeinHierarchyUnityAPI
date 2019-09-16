@@ -1,0 +1,35 @@
+//This script shows how the activeInHierarchy state changes depending on the active state of the GameObject’s parent
+
+using UnityEngine;
+
+public class ActiveInHierarchyExample : MonoBehaviour
+{
+    //Attach these in the Inspector
+    public GameObject m_ParentObject, m_ChildObject;
+    //Use this for getting the toggle data
+    bool m_Activate;
+
+    void Start()
+    {
+        //Deactivate parent GameObject and toggle
+        m_Activate = false;
+    }
+
+    void Update()
+    {
+        //Activate the GameObject you attach depending on the toggle output
+        m_ParentObject.SetActive(m_Activate);
+    }
+
+    void OnGUI()
+    {
+        //Switch this toggle to activate and deactivate the parent GameObject
+        m_Activate = GUI.Toggle(new Rect(10, 10, 100, 30), m_Activate, "Activate Parent GameObject");
+
+        if (GUI.changed)
+        {
+            //Output the status of the GameObject's active state in the console
+            Debug.Log("Child GameObject Active : " + m_ChildObject.activeInHierarchy);
+        }
+    }
+}
